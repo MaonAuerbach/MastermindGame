@@ -42,7 +42,7 @@ public class Round
     }
     
     private int askForGuess(){
-        System.out.println("Guess a number or type -1 to quit");
+        System.out.println("Guess a 5 digit number or type -1 to quit");
         int userGuess=scan.nextInt();
         scan.nextLine();
         
