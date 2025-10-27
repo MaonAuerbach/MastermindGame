@@ -43,8 +43,7 @@ public class Round
         return scan;
     }
 
-
-     private int generateSecret() {
+    private int generateSecret() {
         Random rand = new Random();
         int number;
         do {
@@ -52,7 +51,7 @@ public class Round
         } while (!Guess.hasUniqueDigits(number));
         return number;
     }
-    
+
     private int askForGuess(){
         boolean validGuess=false;
         int userGuess=0;
@@ -61,24 +60,23 @@ public class Round
             System.out.println("Guess a 5 digit number or type -1 to quit");
             userGuess=scan.nextInt();
             scan.nextLine(); 
-            
+
             validGuess=Guess.checkGuess(userGuess); // what does this do really
-            
+
             if(validGuess==false){
                 System.out.println("Guess Again");
             }
         }
 
-        
-        if(userGuess==-1){
-            quit=true;
-        }
-        else{
+        if (userGuess == -1) {
+            quit = true;
+        } else if (Guess.hasUniqueDigits(userGuess) && userGuess >= 10000 && userGuess <= 99999) {
             numGuesses++;
         }
+
         return userGuess;
     }
-    
+
     private void printResults(int apples, int oranges) {
         if (apples == 0 && oranges == 0) {
             System.out.println("nada");
