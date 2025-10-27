@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.Random;
+
 /**
  * Write a description of class Round here.
  *
@@ -14,7 +16,7 @@ public class Round
     private Scanner scan;
 
     public Round(Scanner s){
-        secret=12345;
+        secret=generateSecret();
         numGuesses=0;
         win=false;
         quit=false;
@@ -41,6 +43,16 @@ public class Round
         return scan;
     }
 
+
+     private int generateSecret() {
+        Random rand = new Random();
+        int number;
+        do {
+            number = 10000 + rand.nextInt(90000); 
+        } while (!Guess.hasUniqueDigits(number));
+        return number;
+    }
+    
     private int askForGuess(){
         boolean validGuess=false;
         int userGuess=0;
